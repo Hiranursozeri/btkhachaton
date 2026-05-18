@@ -1,0 +1,66 @@
+{
+  "model_name": "EkoRaf-XGBoost-v2.0",
+  "creation_date": "2026-05-18T22:11:12.849973",
+  "model_type": "XGBRegressor",
+  "target_variable": "Uygulanan_Indirim_Orani",
+  "features": [
+    "SKT_Kalan_Gun",
+    "Hava_Durumu",
+    "Product line",
+    "Unit price"
+  ],
+  "training_samples": 800,
+  "test_samples": 200,
+  "total_features": 12,
+  "hyperparameters": {
+    "n_estimators": 150,
+    "max_depth": 6,
+    "learning_rate": 0.08,
+    "subsample": 0.9,
+    "colsample_bytree": 0.9,
+    "gamma": 1,
+    "min_child_weight": 3,
+    "random_state": 42,
+    "n_jobs": -1,
+    "verbosity": 0
+  },
+  "performance_metrics": {
+    "train": {
+      "MAE": 1.1095496407151222,
+      "RMSE": 1.3673875515367522,
+      "MAPE": 85397415909130.36,
+      "R2": 0.9914726116939101
+    },
+    "test": {
+      "MAE": 2.590508577150107,
+      "RMSE": 3.0604423904877223,
+      "MAPE": 472611829936292.2,
+      "R2": 0.9595882317863519
+    }
+  },
+  "cross_validation_r2": {
+    "mean": 0.9573841105665901,
+    "std": 0.0032313356955769815,
+    "scores": [
+      0.961235495681596,
+      0.9531147338804239,
+      0.9588747241067277,
+      0.9597069707578856,
+      0.9539886284063168
+    ]
+  },
+  "feature_importance": {
+    "SKT_Kalan_Gun": 0.885440468788147,
+    "Product line_Food and beverages": 0.036663733422756195,
+    "Product line_Sports and travel": 0.011576813645660877,
+    "Unit price": 0.008717618882656097,
+    "Product line_Fashion accessories": 0.008634263649582863,
+    "Hava_Durumu_Bulutlu": 0.00855165533721447,
+    "Product line_Electronic accessories": 0.008160393685102463,
+    "Hava_Durumu_Güneşli": 0.007566644344478846,
+    "Product line_Health and beauty": 0.0068023535422980785,
+    "Product line_Home and lifestyle": 0.00642494997009635,
+    "Hava_Durumu_Karlı": 0.006243525538593531,
+    "Hava_Durumu_Yağmurlu": 0.005217738449573517
+  }
+}
