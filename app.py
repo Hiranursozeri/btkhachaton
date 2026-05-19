@@ -26,7 +26,7 @@ st.markdown("""
 # ==========================================
 # DOĞRUDAN VERİ YÜKLEME (ASLA CACHE YOK)
 # ==========================================
-csv_name = "SuperMarket_Analysis_with_synthetic_features.csv"
+csv_name = "SuperMarket Analysis_with_synthetic_features.csv"
 
 # Streamlit'in önbellek çakışmalarını ezmek için doğrudan pandas okuması yapıyoruz
 df = pd.read_csv(csv_name)
