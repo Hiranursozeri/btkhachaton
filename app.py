@@ -112,38 +112,44 @@ with tab1:
         st.plotly_chart(fig2, use_container_width=True)
 
 
+
 # ------------------------------------------
-# SEKME 2: ANLIK REAKSİYON VE ÖNERİ MOTORU
+# SEKME 2: ANLIK REAKSİYON VE ÖNERİ MOTORU (DÜZENLENMİŞ SÜRÜM)
 # ------------------------------------------
 with tab2:
     st.subheader("🤖 EkoRaf Proaktif Aksiyon Dağıtım Ekranı")
     st.write("Sistem, ürünlerin son gününü beklemeden risk durumlarını analiz eder ve dış etkenlere göre anlık mikro-aksiyonlar üretir.")
     
+    # Risk altındaki ürünleri filtrele
     risk_df = filtered_df[filtered_df['SKT_Kalan_Gun'] <= 5].head(10).copy()
     
     if not risk_df.empty:
+        # Mahmut'un bahsettiği o uzun mesajı tabloyu daraltmak için çok daha kısa ve profesyonel aksiyon etiketlerine çeviriyoruz
         risk_df['EkoRaf_Aksiyonu'] = risk_df.apply(
-            lambda row: f"Hava olumsuz! Fiyatı hemen %{row['Uygulanan_Indirim_Orani']:.0f} düşür ve mobil uygulamada 'Fırsat' olarak öne çıkar." 
+            lambda row: "🚨 Mobil Fırsat + %" + f"{row['Uygulanan_Indirim_Orani']:.0f} İndirim"
             if row['Hava_Durumu'] in ['Yağmurlu', 'Karlı'] 
-            else f"Satış hızı normal. Fiyatı %{row['Uygulanan_Indirim_Orani']:.0f} oranında kademeli olarak düşürmeye devam et.", axis=1
+            else "📉 Kademeli Plan %" + f"{row['Uygulanan_Indirim_Orani']:.0f}", axis=1
         )
         
+        # Gösterilebilecek en temiz sütunları seçiyoruz
         display_cols = ['Invoice ID', 'Product line', 'SKT_Kalan_Gun', 'Hava_Durumu', 'Uygulanan_Indirim_Orani', 'EkoRaf_Aksiyonu']
+        
+        # Sütunları Türkçeleştirip genişliklerini sabitliyoruz (Mahmut'un istediği düzenleme tam olarak burası)
         st.dataframe(
-            risk_df[display_cols].rename(columns={
-                'Invoice ID': 'Fatura / Ürün ID',
-                'Product line': 'Ürün Kategorisi',
-                'SKT_Kalan_Gun': 'SKT Kalan Gün',
-                'Hava_Durumu': 'Anlık Hava Durumu',
-                'Uygulanan_Indirim_Orani': 'Önerilen Optimize İndirim (%)',
-                'EkoRaf_Aksiyonu': 'EkoRaf Dinamik Karar Sistemi Aksiyonu'
-            }), 
-            use_container_width=True
+            risk_df[display_cols],
+            use_container_width=True,
+            hide_index=True, # Sol taraftaki gereksiz 0,1,2,3 sıra numaralarını gizler
+            column_config={
+                "Invoice ID": st.column_config.TextColumn("Fatura / Ürün ID", width="small"),
+                "Product line": st.column_config.TextColumn("Ürün Kategorisi", width="medium"),
+                "SKT_Kalan_Gun": st.column_config.NumberColumn("⏳ SKT Kalan", format="%d Gün", width="small"),
+                "Hava_Durumu": st.column_config.TextColumn("🌤️ Hava", width="small"),
+                "Uygulanan_Indirim_Orani": st.column_config.NumberColumn("📉 Önerilen İndirim", format="%%%d", width="small"),
+                "EkoRaf_Aksiyonu": st.column_config.TextColumn("⚡ EkoRaf Sistem Aksiyonu", width="large")
+            }
         )
     else:
         st.info("Harika! Seçilen kriterlere göre şu an kritik risk altında (SKT <= 5 Gün) ürün bulunmamaktadır.")
-
-
 # ------------------------------------------
 # SEKME 3: DİJİTAL İKİZ & SENARYO SİMÜLATÖRÜ
 # ------------------------------------------
