@@ -44,13 +44,15 @@ Eğer projeyi kendi bilgisayarınızda çalıştırmak isterseniz:
    git clone [https://github.com/KULLANICI_ADINIZ/ekoraf-dashboard.git](https://github.com/KULLANICI_ADINIZ/ekoraf-dashboard.git)
    cd ekoraf-dashboard
 2. Gerekli kütüphaneleri yükleyin:
-Bash
 pip install -r requirements.txt
 3. Uygulamayı başlatın:
 streamlit run app.py
-👥 Ekip (Contributors)
-Hiranur - https://github.com/Hiranursozeri
+---
 
-Mahmut - http://github.com/MahmutDnl
+## 👥 Ekip (Contributors)
 
-💡 Bu proje, sürdürülebilir bir gelecek ve sıfır atık vizyonunu desteklemek amacıyla geliştirilmiştir. 
+* **Hiranur** - https://github.com/Hiranursozeri
+* **Mahmut** - https://github.com/MahmutDnl
+---
+
+💡 *Bu proje, sürdürülebilir bir gelecek ve sıfır atık vizyonunu desteklemek amacıyla geliştirilmiştir.*
