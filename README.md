@@ -55,6 +55,7 @@ streamlit run app.py
 * **Hiranur** - https://github.com/Hiranursozeri
 * **Mahmut** - https://github.com/MahmutDnl
 ---
+💡 *Bu proje, sürdürülebilir bir gelecek ve sıfır atık vizyonunu desteklemek amacıyla geliştirilmiştir.*
 ---
 
 ## 🏗️ 4. Sistem Mimarisi (System Architecture)
@@ -75,5 +76,3 @@ EkoRaf'ın teknik çalışma prensibi ve veri akış mimarisi aşağıdaki şeki
        │
        ▼
 [Mobil API Entegrasyonu (Gelecek)] ─────► (Müşteriye Anlık Mobil Bildirim / Push)
-
-💡 *Bu proje, sürdürülebilir bir gelecek ve sıfır atık vizyonunu desteklemek amacıyla geliştirilmiştir.*
