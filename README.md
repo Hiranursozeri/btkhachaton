@@ -48,6 +48,26 @@ pip install -r requirements.txt
 3. Uygulamayı başlatın:
 streamlit run app.py
 ---
+---
+
+## 🏗️ Sistem Mimarisi (System Architecture)
+
+EkoRaf'ın teknik çalışma prensibi ve veri akış mimarisi aşağıdaki şekilde tasarlanmıştır:
+
+```text
+[Veri Kaynağı: Excel / CSV] 
+       │
+       ▼
+[EkoRaf Dinamik Karar Motoru (Python)] ───► (Dış Değişken Analizi: Hava Durumu, SKT)
+       │
+       ▼
+[Kademeli Optimize Fiyatlandırma] ─────► (Algoritma Tabanlı Mikro İndirim Hesaplama)
+       │
+       ▼
+[Kullanıcı Paneli (Streamlit Cloud)] ───► (Yönetici ve Mağaza Müdürü Dijital İkizi)
+       │
+       ▼
+[Mobil API Entegrasyonu (Gelecek)] ─────► (Müşteriye Anlık Mobil Bildirim / Push)
 
 ## 👥 Ekip (Contributors)
 
